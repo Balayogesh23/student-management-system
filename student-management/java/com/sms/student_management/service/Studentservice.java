@@ -30,7 +30,15 @@ public void delStudent(int id)
 {
 	repo.deleteById(id);
 }
-
+public Student updateStudent(int id,Student student)
+{
+	Student existing=repo.findById(id).orElse(null);
+	existing.setName(student.getName());
+	existing.setEmail(student.getEmail());
+	existing.setCourse(student.getCourse());
+	
+	return repo.save(existing);
+}
 
 
 }
